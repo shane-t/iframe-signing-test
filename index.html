@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+<title>
+MMI test - main window
+</title>
+</head>
+
+<body>
+
+Sign a message
+
+<input type="text" name="address" placeholder='Address (0x...)'/> 
+
+<button id='sign'>Sign</button>
+
+
+</body>
+<script>
+
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    const sign = document.getElementById('sign');
+    const address = document.getElementsByName('address')[0];
+
+
+    sign.addEventListener('click', async () => {
+      await window.ethereum.enable();
+      const payload = {
+        method : 'eth_sign',
+        params : [address.value, '0x' + '0'.repeat(64)]
+      };
+
+      const result = await window.ethereum.request(payload)
+      console.log(result);
+    })
+  });
+
+
+</script>
+
+</html>
