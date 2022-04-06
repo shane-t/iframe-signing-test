@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
   const sign = document.getElementById('sign');
   const address = document.getElementsByName('address')[0];
-  const result = document.getElementById('sign_result');
+  const sign_result = document.getElementById('sign_result');
 
   sign.addEventListener('click', async () => {
+
+    console.log('DOMContentLoaded');
+
     await window.ethereum.enable();
     const payload = {
       method : 'eth_sign',
